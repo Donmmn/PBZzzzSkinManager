@@ -9,7 +9,10 @@ local rosterScroll,rosterLayout,lastScrolledSelection
 local modelViews,emptyViews={},{ };local titleWidget,titleClip,liveLabel
 local locale=require('ui_locale');local folders=require('folder_actions')
 local shaderStatus=require('shader_status');local shaderTitle,shaderDetail
-local function T(key)return locale.get(key)end
+local function T(key)
+ if key=='footer'then return locale.footer(controls)end
+ return locale.get(key)
+end
 local image;local detailExtent;local settleFrames=0;local transitions
 local lattice=require('roster_layout')
 local opened,moveHeld,lookHeld=false,false,false

@@ -1,5 +1,5 @@
 -- Read once on startup. Key names are data, never executable Lua.
-local json=require('json');local M={wardrobe_name='F10',shader_name='F5'}
+local json=require('json');local M={wardrobe_name='F6',shader_name='F5'}
 local source=debug.getinfo(1,'S').source:gsub('^@',''):gsub('\\','/')
 local root=assert(source:match('^(.*)/Scripts/[^/]+$'),'Cannot locate wardrobe controls')
 local file=io.open(root..'/controls.json','rb')

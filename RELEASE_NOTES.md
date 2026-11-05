@@ -1,17 +1,21 @@
-# 2.4.2 Preview
+# 2.4.5 — F6 wardrobe default
 
 ## English
 
-First GitHub preview of the generic PBZzzzSkinManager Core: F10 wardrobe, opt-in manifest-driven F5 v4/v5 shading with status readback, per-character Ultimate video controls and manual Ultimate-energy refill. Chinese and English documentation are separate.
+- F6 opens the wardrobe by default; F5 shading, Esc close/cancel and in-panel F8 scanning remain available.
+- Existing controls.json is preserved. To migrate F10/F11/custom bindings to F6, close the game and edit only wardrobe_key to "F6", keep shader_key, then restart. New installs without controls.json use F6/F5; controls.example.json is a template.
+- The footer reflects actual configured key names in Chinese and English.
+- No fullscreen flag, Alt+Enter, INI, ConsoleKeys or UE4SS built-in mod is changed. The experimental F11 compatibility module is not included.
+- Clean Steam environment verification covered 695 files; 108 freshly imported files passed SHA256 checks. Cold load and F6 panel operation were confirmed. The final package preserves all 60 tested Core GameFiles. A full gameplay regression was not repeated this round.
 
-Download **PBZWardrobe-Core-2.4.2-preview.zip** to install. Character packs and videos are separate; Quark links are not yet supplied. **Source Review** is optional and GitHub's automatically generated source archives are not installable game packages. The screenshot is a real user-supplied capture.
-
-The two ZIPs are byte-identical to the frozen 2.4.2 review packages. SHA256SUMS.txt covers both ZIPs and the demonstration PNG. Existing local integration was user-tested on build26367565; independent portable clean-install acceptance remains pending. This is a pre-release, not a complete recreation of ZZZ rendering. Manual install only; Vortex is unverified. Native helper is unsigned; public source does not guarantee safety. Nexus's optional source-archive quarantine is under separate review and is not cleared by this release.
+Install **PBZWardrobe-Core-2.4.5-F6.zip**. Source Review and GitHub's automatic Source code downloads are for development/review, not installation. Character packs/videos and the UE4SS loader are separate. This supersedes the withdrawn 2.4.2 Core installer. Native helper remains unsigned; no safety or FPS guarantee is claimed. Check SHA256SUMS.txt.
 
 ## 简体中文
 
-通用管理器首次 GitHub 预览发行：F10 换装、清单声明的 F5 v4/v5 材质与状态核对、每角色大招视频管理、手动补满大招能量。中英文 README 独立提供。
+- 默认F6打开面板；F5着色、Esc关闭/中止、面板内F8扫描保持不变。
+- 保留已有controls.json。旧F10/F11/自定义键升级不会被静默覆盖；退出游戏后仅把wardrobe_key改为"F6"，保留shader_key，再重启。没有配置时使用F6/F5内置默认，controls.example.json仅为模板。
+- 中英文底部提示同步显示实际配置键名。
+- 不修改全屏开关、Alt+Enter、INI、ConsoleKeys或UE4SS内置Mod，不包含试验性F11兼容模块。
+- Steam干净环境校验695文件，全新导入108文件通过SHA256核对，冷启动读档和F6面板已确认。最终包60个Core游戏文件与实测一致；本轮未重复完整游戏回归。
 
-安装请下载 **PBZWardrobe-Core-2.4.2-preview.zip**。角色和视频另行分发，尚未提供夸克链接。Source Review 为可选源码包；GitHub 自动生成的 Source code 压缩包不能作为模组安装。演示图为用户真实游戏截图。
-
-两个 ZIP 与冻结的 2.4.2 审核包完全相同，SHA256SUMS.txt 覆盖两包与演示 PNG。本机整合安装已在 build26367565 下由用户验收，独立干净安装仍待验证，所以保留预发布状态。不是绝区零官方渲染的完整复刻。提供手动安装，Vortex 尚未验证。原生 helper 未签名，公开源码不等于绝对安全；Nexus 的可选源码包隔离仍走独立复核流程。
+安装请下载 **PBZWardrobe-Core-2.4.5-F6.zip**。Source Review及GitHub自动生成的Source code只供开发审查，不是安装包。角色、视频和UE4SS加载器另行下载。本版替代已撤回的2.4.2 Core安装包。原生helper仍未签名，不作绝对安全或帧率保证，校验值见SHA256SUMS.txt。

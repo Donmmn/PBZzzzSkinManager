@@ -18,7 +18,9 @@ with zipfile.ZipFile(args.core_zip) as z:
     assert z.testzip() is None, 'Core ZIP integrity failed'
     for p in sorted((root / 'Scripts').glob('*.lua')):
         member = 'GameFiles/platform/steam/ue4ss/Mods/PBZWardrobe/Scripts/' + p.name
-        assert p.read_bytes() == z.read(member), 'Runtime source mismatch: ' + p.name
+        # Git checkouts and the GitHub text API may normalize CRLF to LF.
+        normalize = lambda b: b.decode('utf-8-sig').replace('\r\n', '\n')
+        assert normalize(p.read_bytes()) == normalize(z.read(member)), 'Runtime source mismatch: ' + p.name
         if lua:
             lua(p.read_text(encoding='utf-8-sig'), p.name)
 for p in (root / 'schema').glob('*.json'):

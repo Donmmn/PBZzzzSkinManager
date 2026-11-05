@@ -12,6 +12,8 @@ The release contains the runtime resources needed by Core. Shader HLSL and mater
 
 ## Source validation
 
-Run `python tools/check_source.py --core-zip <downloaded Core ZIP>` to compare every published runtime Lua script against the frozen install package, validate JSON, and reject accidental private state/binary/video content in the source tree. With the optional developer dependency `lupa`, `--lua` additionally compiles the Lua sources. This is offline validation, not in-game acceptance.
+Run `python tools/check_source.py --core-zip <downloaded Core ZIP>` to compare every published runtime Lua script against the frozen install package, allowing UTF-8 BOM / CRLF-to-LF checkout normalization only, validate JSON, and reject accidental private state/binary/video content in the source tree. With the optional developer dependency `lupa`, `--lua` additionally compiles the Lua sources. This is offline validation, not in-game acceptance.
 
-Historical UI fixture scripts remain in the unchanged Source Review release ZIP. Their old workspace-relative paths are not advertised as portable tests; they are omitted from this repository. Current runtime Lua is copied byte-for-byte from that frozen review source.
+Historical UI fixture scripts remain in the unchanged Source Review release ZIP. Their old workspace-relative paths are not advertised as portable tests; they are omitted from this repository. Runtime Lua contains the same code as that frozen review source; repository text transport may normalize line endings. The unchanged Source Review ZIP preserves original source bytes.
+
+The initial `v2.4.2-preview` source tag used a strict byte comparison in the check script. Use the current `main` branch's check script when validating an LF-normalized checkout. The installer and optional Source Review ZIP are unchanged; this maintenance correction does not alter game behavior.

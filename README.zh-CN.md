@@ -24,7 +24,7 @@
 ## 环境要求
 
 - Windows x64、Steam《影之刃零》。
-- 单独安装 [PBZ 专用 UE4SS v3.0.1-1183-gcdbc0b66](https://github.com/KintaroModding/ue4ss/releases/tag/v3.0.1-1183-gcdbc0b66)。
+- 单独安装 [PBZ 专用 UE4SS v3.0.1-1183-gcdbc0b66](https://github.com/KintaroModding/ue4ss/releases/tag/v3.0.1-1183-gcdbc0b66)。**在发布页附件中选择 [`phantombladezero_ue4ss_v3.0.1-1183-gcdbc0b66.zip`](https://github.com/KintaroModding/ue4ss/releases/download/v3.0.1-1183-gcdbc0b66/phantombladezero_ue4ss_v3.0.1-1183-gcdbc0b66.zip)**（此链接可直接下载）。不要选择通用 `UE4SS_v...zip`、其他游戏的包或 GitHub 自动生成的 `Source code` 源码包。
 - 视频播放需要 Windows Media Foundation；Windows N 可能需要安装媒体功能包。
 - 另行下载兼容角色包。角色资源由作者另发夸克网盘，本仓库暂未公布夸克链接。
 
@@ -33,7 +33,7 @@
 ## 安装
 
 1. 退出游戏，备份已有模组。
-2. 将上述 PBZ UE4SS 包解压到 `PBZ/platform/steam`，与较大的 `PBZ.exe` 放在一起。
+2. 下载上述文件名完全一致的 PBZ 专用 ZIP，将压缩包的**内容直接解压到 `PBZ/platform/steam`**，与较大的 `PBZ.exe` 同级；不要额外套一层以压缩包名称命名的文件夹。
 3. 解压管理器安装包，将 **`GameFiles` 内的 `platform` 和 `ProjectPBZ`** 合并到 PBZ 游戏根目录，不要把外层 `GameFiles` 文件夹整个复制进去。
 4. 按同样的相对目录安装角色包，再从 Steam 启动游戏并读档。
 

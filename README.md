@@ -24,7 +24,7 @@ Download **PBZWardrobe-Core-2.4.5-F6.zip** from the release assets. GitHub's aut
 ## Requirements
 
 - Windows x64 and Steam Phantom Blade Zero.
-- [PBZ-configured UE4SS v3.0.1-1183-gcdbc0b66](https://github.com/KintaroModding/ue4ss/releases/tag/v3.0.1-1183-gcdbc0b66), installed separately.
+- Install [PBZ-configured UE4SS v3.0.1-1183-gcdbc0b66](https://github.com/KintaroModding/ue4ss/releases/tag/v3.0.1-1183-gcdbc0b66) separately. **Choose the asset named [`phantombladezero_ue4ss_v3.0.1-1183-gcdbc0b66.zip`](https://github.com/KintaroModding/ue4ss/releases/download/v3.0.1-1183-gcdbc0b66/phantombladezero_ue4ss_v3.0.1-1183-gcdbc0b66.zip)** (direct download). Do not choose a generic `UE4SS_v...zip`, a package for another game, or GitHub's `Source code` archives.
 - Windows Media Foundation for movies; Windows N may need the Media Feature Pack.
 - Compatible character packs, downloaded separately from the author's character releases / Quark shares. No Quark download links have been announced in this repository yet.
 
@@ -33,7 +33,7 @@ Players do **not** need Unreal Editor, Blender, Python, FFmpeg, or an external v
 ## Installation
 
 1. Close the game and back up existing mods.
-2. Extract the linked PBZ UE4SS package into `PBZ/platform/steam`, beside the larger `PBZ.exe`.
+2. Download the exact PBZ-specific ZIP named above and extract its **contents directly into `PBZ/platform/steam`**, beside the larger `PBZ.exe`. Do not add an extra outer folder named after the ZIP.
 3. Extract the Core ZIP. Merge **`platform` and `ProjectPBZ` from inside `GameFiles`** into the PBZ game root. Do not copy the outer `GameFiles` folder itself.
 4. Install compatible character packages with the same relative layout, then launch through Steam and load a save.
 

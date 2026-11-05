@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "required": [
+    "schema",
+    "id",
+    "name",
+    "slots",
+    "mesh",
+    "post_process",
+    "physics"
+  ],
+  "index_base": 0,
+  "capabilities": {
+    "paint": "disabled unless paint.enabled == true; enabled requires isolated parents.Mask and parents.Blend",
+    "primary_physics": "disabled unless primary_physics.enabled == true; enabled requires asset and nonempty required_sockets",
+    "fallback_assets": "optional coherent mesh/post_process/physics triple; no profile-ID logic"
+  },
+  "slot_lists": [
+    "hidden_slots",
+    "translucent_slots",
+    "lit_blend_slots",
+    "eye_slots",
+    "face_slots",
+    "hair_slots",
+    "body_emissive_slots"
+  ],
+  "ordering": "sort_order (default1000) then id; default:true picks first preferred profile in sorted order, otherwise first; saved/current IDs take precedence",
+  "materials": {
+    "parents": {
+      "mask": "/InterchangeAssets/gltf/MaterialInstances/MI_Default_Mask_DS.MI_Default_Mask_DS",
+      "unlit_blend": "/InterchangeAssets/gltf/MaterialInstances/MI_Unlit_Blend_DS.MI_Unlit_Blend_DS",
+      "lit_blend": "/InterchangeAssets/gltf/MaterialInstances/MI_Default_Blend_DS.MI_Default_Blend_DS"
+    },
+    "base_color": ".8 default / legacy top-level base_color",
+    "blend_alpha": 0.3,
+    "metallic": 0,
+    "roughness": 1,
+    "specular": 0.15,
+    "emissive_by_slot": "JSON object with zero-based decimal string keys and numbers0..100, overriding role emissive except hidden slots"
+  },
+  "paint": {
+    "parents": "Mask/Blend exact Unreal object paths, isolated wardrobe namespace",
+    "style_value": "number .0001..100 (default1)",
+    "parameters": "scalar-name -> finite number -10000..10000; PBZPaintStyle and PaintSurfaceType reserved",
+    "surface_types": "zero-based string slot keys -> integer0body/1face/2hair/3eye; omitted slots derive explicit role arrays"
+  },
+  "hide_original": {
+    "enabled": true,
+    "native_cloth": true,
+    "replace_default_names": false,
+    "component_names": "array added to PBZ original names unless replacement requested; main mesh and weapons rejected",
+    "asset_roots": "array overrides original Hero_Hun roots only",
+    "asset_fragments": "array overrides default original cosmetic fragments; weapon fragments rejected"
+  },
+  "limitations": [
+    "PBZ adult-Hun replacement adapter only; original animation class remains",
+    "post_process and physics are required cooked isolated wardrobe assets",
+    "model.json does not mount, convert or retarget an arbitrary PAK",
+    "no ultimate-video addon or native combat adapter support in this standalone Core",
+    "new generic release requires fresh-game runtime validation; tested old build26266538, new26367565 pending"
+  ]
+}

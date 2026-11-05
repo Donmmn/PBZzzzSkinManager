@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "id": "example_character",
+  "name": "Example character / 示例角色",
+  "sort_order": 100,
+  "default": false,
+  "mesh": "/HuaShira/Mods/PBZWardrobe/Example/Body.Body",
+  "post_process": "/HuaShira/Mods/PBZWardrobe/Example/PostProcess.PostProcess_C",
+  "physics": "/HuaShira/Mods/PBZWardrobe/Example/SecondaryPhysics.SecondaryPhysics",
+  "slots": [
+    "body",
+    "face",
+    "hair"
+  ],
+  "face_slots": [
+    1
+  ],
+  "hair_slots": [
+    2
+  ],
+  "eye_slots": [],
+  "face_emissive": 0,
+  "hidden_slots": [],
+  "primary_physics": {
+    "enabled": true,
+    "asset": "/HuaShira/Characters/Hero/Hero_Hun/PA_Hun.PA_Hun",
+    "required_sockets": [
+      "pelvis",
+      "spine_04"
+    ]
+  },
+  "paint": {
+    "enabled": false
+  },
+  "hide_original": {
+    "enabled": true,
+    "native_cloth": true
+  }
+}

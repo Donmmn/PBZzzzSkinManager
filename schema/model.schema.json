@@ -1,0 +1,487 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PBZWardrobe cosmetic profile schema 1",
+  "type": "object",
+  "required": [
+    "schema",
+    "id",
+    "name",
+    "mesh",
+    "post_process",
+    "physics",
+    "slots"
+  ],
+  "properties": {
+    "schema": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "maxLength": 64,
+      "pattern": "^[a-z0-9_-]+$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "namespace": {
+      "type": "string"
+    },
+    "mesh": {
+      "type": "string",
+      "maxLength": 512,
+      "pattern": "^/HuaShira/Mods/PBZWardrobe/[A-Za-z0-9_/]+\\.[A-Za-z0-9_]+$"
+    },
+    "post_process": {
+      "type": "string",
+      "maxLength": 512,
+      "pattern": "^/HuaShira/Mods/PBZWardrobe/[A-Za-z0-9_/]+\\.[A-Za-z0-9_]+$"
+    },
+    "physics": {
+      "type": "string",
+      "maxLength": 512,
+      "pattern": "^/HuaShira/Mods/PBZWardrobe/[A-Za-z0-9_/]+\\.[A-Za-z0-9_]+$"
+    },
+    "slots": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 64,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9_-]+$"
+      }
+    },
+    "sort_order": {
+      "type": "integer",
+      "minimum": -100000,
+      "maximum": 100000,
+      "default": 1000
+    },
+    "default": {
+      "type": "boolean",
+      "default": false
+    },
+    "base_color": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 4,
+      "default": 0.8
+    },
+    "face_emissive": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "default": 0
+    },
+    "eye_emissive": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "body_emissive": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "default": 0
+    },
+    "fallback_assets": {
+      "type": "object",
+      "required": [
+        "mesh",
+        "post_process",
+        "physics"
+      ],
+      "properties": {
+        "mesh": {
+          "type": "string",
+          "maxLength": 512,
+          "pattern": "^/[A-Za-z0-9_/]+\\.[A-Za-z0-9_]+$"
+        },
+        "post_process": {
+          "type": "string",
+          "maxLength": 512,
+          "pattern": "^/[A-Za-z0-9_/]+\\.[A-Za-z0-9_]+$"
+        },
+        "physics": {
+          "type": "string",
+          "maxLength": 512,
+          "pattern": "^/[A-Za-z0-9_/]+\\.[A-Za-z0-9_]+$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "primary_physics": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "default": false
+        },
+        "asset": {
+          "type": "string",
+          "maxLength": 512,
+          "pattern": "^/[A-Za-z0-9_/]+\\.[A-Za-z0-9_]+$"
+        },
+        "required_sockets": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512,
+            "pattern": "^[A-Za-z0-9_]+$"
+          },
+          "uniqueItems": true
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "enabled": {
+                "const": true
+              }
+            },
+            "required": [
+              "enabled"
+            ]
+          },
+          "then": {
+            "required": [
+              "asset"
+            ],
+            "properties": {
+              "required_sockets": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "materials": {
+      "type": "object",
+      "properties": {
+        "parents": {
+          "type": "object",
+          "properties": {
+            "mask": {
+              "type": "string",
+              "maxLength": 512,
+              "pattern": "^/[A-Za-z0-9_/]+\\.[A-Za-z0-9_]+$"
+            },
+            "unlit_blend": {
+              "type": "string",
+              "maxLength": 512,
+              "pattern": "^/[A-Za-z0-9_/]+\\.[A-Za-z0-9_]+$"
+            },
+            "lit_blend": {
+              "type": "string",
+              "maxLength": 512,
+              "pattern": "^/[A-Za-z0-9_/]+\\.[A-Za-z0-9_]+$"
+            }
+          },
+          "additionalProperties": false
+        },
+        "base_color": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 4
+        },
+        "blend_alpha": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.3
+        },
+        "metallic": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0
+        },
+        "roughness": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 1
+        },
+        "specular": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.15
+        },
+        "emissive_by_slot": {
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^[0-9]+$"
+          },
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "paint": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "default": false
+        },
+        "parents": {
+          "type": "object",
+          "properties": {
+            "Mask": {
+              "type": "string",
+              "maxLength": 512,
+              "pattern": "^/HuaShira/Mods/PBZWardrobe/[A-Za-z0-9_/]+\\.[A-Za-z0-9_]+$"
+            },
+            "Blend": {
+              "type": "string",
+              "maxLength": 512,
+              "pattern": "^/HuaShira/Mods/PBZWardrobe/[A-Za-z0-9_/]+\\.[A-Za-z0-9_]+$"
+            }
+          },
+          "required": [
+            "Mask",
+            "Blend"
+          ],
+          "additionalProperties": false
+        },
+        "style_value": {
+          "type": "number",
+          "minimum": 0.0001,
+          "maximum": 100,
+          "default": 1
+        },
+        "parameters": {
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^[A-Za-z][A-Za-z0-9_]{0,127}$",
+            "not": {
+              "enum": [
+                "PBZPaintStyle",
+                "PaintSurfaceType"
+              ]
+            }
+          },
+          "additionalProperties": {
+            "type": "number",
+            "minimum": -10000,
+            "maximum": 10000
+          }
+        },
+        "surface_types": {
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^[0-9]+$"
+          },
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "enabled": {
+                "const": true
+              }
+            },
+            "required": [
+              "enabled"
+            ]
+          },
+          "then": {
+            "required": [
+              "parents"
+            ]
+          }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "spring_groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "prefix",
+          "stiffness",
+          "damping"
+        ],
+        "properties": {
+          "prefix": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9_]+$"
+          },
+          "stiffness": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1000000
+          },
+          "damping": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100000
+          },
+          "swing_degrees": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 180
+          },
+          "twist_degrees": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 180
+          },
+          "body_angular_damping": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 10000
+          }
+        },
+        "dependentRequired": {
+          "swing_degrees": [
+            "twist_degrees"
+          ],
+          "twist_degrees": [
+            "swing_degrees"
+          ]
+        },
+        "additionalProperties": false
+      }
+    },
+    "hide_original": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "default": true
+        },
+        "native_cloth": {
+          "type": "boolean",
+          "default": true
+        },
+        "replace_default_names": {
+          "type": "boolean",
+          "default": false
+        },
+        "component_names": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512,
+            "pattern": "^[A-Za-z][A-Za-z0-9_]*$"
+          },
+          "uniqueItems": true
+        },
+        "asset_roots": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512,
+            "pattern": "^/[A-Za-z0-9_/]+/$"
+          },
+          "uniqueItems": true
+        },
+        "asset_fragments": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512,
+            "pattern": "^/[A-Za-z0-9_/]+$"
+          },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "hidden_slots": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 63
+      },
+      "maxItems": 64,
+      "uniqueItems": true
+    },
+    "translucent_slots": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 63
+      },
+      "maxItems": 64,
+      "uniqueItems": true
+    },
+    "lit_blend_slots": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 63
+      },
+      "maxItems": 64,
+      "uniqueItems": true
+    },
+    "eye_slots": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 63
+      },
+      "maxItems": 64,
+      "uniqueItems": true
+    },
+    "face_slots": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 63
+      },
+      "maxItems": 64,
+      "uniqueItems": true
+    },
+    "hair_slots": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 63
+      },
+      "maxItems": 64,
+      "uniqueItems": true
+    },
+    "body_emissive_slots": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 63
+      },
+      "maxItems": 64,
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": false,
+  "$comment": "Indices are zero based and must also be lower than slots.length. Runtime profile_config.lua checks those cross-field limits, folder/id equality, allowed asset roots and hiding restrictions. Templates contain placeholder paths and are not functional character packs."
+}
